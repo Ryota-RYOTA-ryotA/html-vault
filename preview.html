@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第一陣応募先 選定レポート v2｜SmartHR繰り上げ版</title>
+<style>
+:root{
+  --bg:#f5f8fb;--panel:#fff;--ink:#101828;--sub:#344054;--muted:#667085;--line:#e4e7ec;
+  --blue:#155EEF;--cyan:#06AED4;--purple:#6941C6;--green:#039855;--amber:#dc6803;--red:#d92d20;
+  --blue-bg:#eef4ff;--green-bg:#ecfdf3;--amber-bg:#fffaeb;--red-bg:#fef3f2;--purple-bg:#f4f3ff;
+  --green-line:#abefc6;--amber-line:#fedf89;--red-line:#fecdca;--purple-line:#d9d6fe;
+  --shadow:0 20px 55px rgba(16,24,40,.08);--shadow-soft:0 10px 28px rgba(16,24,40,.06);--radius:22px;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:92px}body{margin:0;background:radial-gradient(circle at 0% 0%,rgba(21,94,239,.12),transparent 34%),radial-gradient(circle at 80% 0%,rgba(6,174,212,.10),transparent 30%),var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans JP','Hiragino Kaku Gothic ProN','Yu Gothic',Meiryo,sans-serif;font-size:15.5px;line-height:1.82;-webkit-font-smoothing:antialiased}a{color:inherit}.container{max-width:1200px;margin:0 auto;padding:36px 24px 96px}.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#fff 0%,#f8fbff 58%,#eef6ff 100%);border:1px solid rgba(21,94,239,.12);border-radius:32px;padding:46px 46px 40px;box-shadow:var(--shadow)}.hero:after{content:"";position:absolute;right:-110px;top:-120px;width:350px;height:350px;border-radius:50%;background:linear-gradient(135deg,rgba(21,94,239,.14),rgba(6,174,212,.12))}.kicker{position:relative;display:inline-flex;gap:9px;align-items:center;padding:7px 12px;border-radius:999px;background:var(--blue-bg);color:var(--blue);font-size:12px;font-weight:800;letter-spacing:.05em;margin-bottom:18px}.kicker span{width:7px;height:7px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--cyan));display:inline-block}h1{position:relative;font-size:39px;letter-spacing:-.045em;line-height:1.24;margin:0 0 16px;max-width:930px}.lead{position:relative;max-width:970px;color:var(--sub);font-size:16.4px;margin:0 0 25px}.meta{position:relative;display:flex;flex-wrap:wrap;gap:10px;color:var(--muted);font-size:13px}.pill{background:#fff;border:1px solid var(--line);padding:6px 10px;border-radius:999px;font-weight:650}.nav{position:sticky;top:0;z-index:8;margin:22px 0 28px;background:rgba(255,255,255,.84);backdrop-filter:blur(16px);border:1px solid rgba(228,231,236,.82);border-radius:18px;padding:12px;box-shadow:var(--shadow-soft);display:flex;gap:8px;overflow:auto}.nav a{white-space:nowrap;text-decoration:none;color:var(--sub);font-size:13px;font-weight:800;padding:8px 12px;border-radius:12px}.nav a:hover{background:var(--blue-bg);color:var(--blue)}.section{margin-top:28px;background:rgba(255,255,255,.78);border:1px solid var(--line);border-radius:28px;padding:30px;box-shadow:var(--shadow-soft)}.section h2{font-size:25px;letter-spacing:-.035em;line-height:1.35;margin:0 0 14px}.section>p{margin:0 0 18px;color:var(--sub)}.grid{display:grid;gap:18px}.grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow-soft)}.card h3{font-size:16px;margin:0 0 8px}.card p{margin:0;color:var(--sub)}.summary-number{font-size:42px;line-height:1;font-weight:900;letter-spacing:-.06em;background:linear-gradient(135deg,var(--blue),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.badge{display:inline-flex;align-items:center;gap:6px;font-weight:850;border-radius:999px;padding:6px 10px;font-size:12px}.badge.first,.phase.first{color:var(--green);background:var(--green-bg);border:1px solid var(--green-line)}.badge.second,.phase.second{color:var(--amber);background:var(--amber-bg);border:1px solid var(--amber-line)}.badge.challenge,.phase.second_high{color:var(--purple);background:var(--purple-bg);border:1px solid var(--purple-line)}.badge.neutral{color:var(--sub);background:#f2f4f7;border:1px solid #eaecf0}.badge.warn{color:var(--red);background:var(--red-bg);border:1px solid var(--red-line)}.mark{font-weight:850;background:linear-gradient(transparent 62%,rgba(6,174,212,.20) 62%)}.logic{display:grid;grid-template-columns:58px 1fr;gap:14px;align-items:start;border-top:1px solid var(--line);padding-top:18px;margin-top:18px}.logic:first-of-type{border-top:none;padding-top:0;margin-top:0}.logic-num{width:44px;height:44px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(135deg,var(--blue),var(--cyan));color:#fff;font-weight:950}.logic h3{margin:0 0 6px;font-size:16px}.logic p{margin:0;color:var(--sub)}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:20px;background:#fff}table{border-collapse:collapse;width:100%;min-width:1120px}th,td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}th{font-size:12px;letter-spacing:.04em;color:var(--muted);background:#f9fafb;text-transform:uppercase}td{font-size:13.8px;color:var(--sub)}tr:last-child td{border-bottom:none}.rank-cell{font-weight:950;color:var(--ink);font-size:17px}.company-cell strong{display:block;color:var(--ink);font-size:15px}.company-cell span{display:block;color:var(--muted);font-size:12.4px;line-height:1.55;margin-top:3px}.phase{display:inline-flex;align-items:center;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:850;white-space:nowrap}.order{list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}.order li{background:#fff;border:1px solid var(--line);border-radius:18px;padding:13px;min-height:90px}.order .num{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:10px;background:var(--blue-bg);color:var(--blue);font-weight:950;font-size:12px;margin-bottom:8px}.order strong{display:block;font-size:14px;line-height:1.35}.order small{display:block;color:var(--muted);font-size:12px;line-height:1.4;margin-top:4px}.company-card{background:#fff;border:1px solid var(--line);border-radius:28px;margin-top:20px;box-shadow:var(--shadow-soft);overflow:hidden}.company-head{display:grid;grid-template-columns:1fr auto;gap:20px;padding:26px 28px;background:linear-gradient(135deg,#fff,#f8fbff);border-bottom:1px solid var(--line)}.rank-label{font-size:12px;font-weight:950;color:var(--blue);letter-spacing:.08em;margin-bottom:4px}.company-title{font-size:24px;letter-spacing:-.035em;font-weight:950;margin:0}.company-pos{margin:4px 0 0;color:var(--muted);font-size:14px}.company-link{display:inline-flex;margin-top:8px;font-size:12px;color:var(--blue);text-decoration:none;font-weight:800}.company-type{text-align:right}.company-body{padding:26px 28px}.mini-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-bottom:18px}.mini{background:#f9fafb;border:1px solid #eaecf0;border-radius:18px;padding:16px}.mini .label{font-size:12px;font-weight:950;letter-spacing:.04em;color:var(--muted);margin-bottom:6px}.mini p{margin:0;color:var(--sub);font-size:14px}.analysis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.analysis-block{border-left:3px solid var(--blue);padding-left:14px}.analysis-block h4{margin:0 0 6px;font-size:14.5px}.analysis-block p{margin:0;color:var(--sub);font-size:14px}.callout{border-radius:20px;padding:18px 20px;margin-top:18px;border:1px solid}.callout p{margin:0;color:var(--sub)}.callout strong{color:var(--ink)}.callout.first{background:var(--green-bg);border-color:var(--green-line)}.callout.second{background:var(--amber-bg);border-color:var(--amber-line)}.callout.challenge{background:var(--purple-bg);border-color:var(--purple-line)}.callout.neutral{background:#f9fafb;border-color:#eaecf0}.callout.warn{background:var(--red-bg);border-color:var(--red-line)}.matrix{display:grid;grid-template-columns:1.05fr 1fr;gap:18px}.note{font-size:13px;color:var(--muted);margin-top:12px}.footer{margin-top:30px;text-align:center;color:var(--muted);font-size:13px}@media(max-width:920px){.container{padding:22px 14px 72px}.hero{padding:30px 24px}.hero:after{display:none}h1{font-size:30px}.grid.cols-3,.grid.cols-2,.mini-grid,.analysis,.matrix{grid-template-columns:1fr}.company-head{grid-template-columns:1fr}.company-type{text-align:left}.section{padding:22px}.logic{grid-template-columns:1fr}.order{grid-template-columns:repeat(2,minmax(0,1fr))}.nav{border-radius:14px}}
+</style>
+</head>
+<body>
+<div class="container">
+  <header class="hero">
+    <div class="kicker"><span></span>CAREER STRATEGY / FIRST WAVE SELECTION v2</div>
+    <h1>第一陣応募先 6社の再選定<br>SmartHRを第一陣、カケハシを第二陣へ</h1>
+    <p class="lead">添付HTMLの10社個別評価とGoogle Spreadsheet「分析」シートを統合し、評価対象者の制約・起業準備・職域の広さ・採用現実性を踏まえて、第一陣応募先を再整理した。今回の修正では、<span class="mark">RCは乗り越えられる運用課題</span>として扱い、SmartHRを第一陣へ繰り上げる。一方、<span class="mark">副業可明示は加点ではなく、許可制/申請制という確認事項</span>として扱い直す。</p>
+    <div class="meta">
+      <span class="pill">作成日: 2026-05-17</span>
+      <span class="pill">対象: Layer 1通過10社</span>
+      <span class="pill">第一陣: ランキング上位6社</span>
+      <span class="pill">前提: 年収550万円下限 / 東京 / 英語ゼロ / 非エンジニア</span>
+    </div>
+  </header>
+
+  <nav class="nav">
+    <a href="#executive">結論</a><a href="#context">前提</a><a href="#changes">改訂ポイント</a><a href="#logic">判断ロジック</a><a href="#order">第一陣順位</a><a href="#ranking">10社ランキング</a><a href="#details">各社詳細</a><a href="#actions">実務アクション</a>
+  </nav>
+
+  <section class="grid cols-3" id="executive">
+    <div class="card">
+      <div class="summary-number">6</div>
+      <h3>第一陣応募先</h3>
+      <p>ランキング上位6社をそのまま第一陣にする。応募順もこの順位に準拠する。</p>
+      <div class="badges"><span class="badge first">#1 atama plus</span><span class="badge first">#2 LegalOn</span><span class="badge first">#3 freee</span><span class="badge first">#4 SmartHR</span><span class="badge first">#5 燈</span><span class="badge first">#6 アンドパッド</span></div>
+    </div>
+    <div class="card">
+      <div class="summary-number">4</div>
+      <h3>第二陣・後続</h3>
+      <p>魅力はあるが、MUST壁・本人熱量・年収境界・職域の狭さがあり、第一陣ではない。</p>
+      <div class="badges"><span class="badge challenge">#7 モノグサ</span><span class="badge second">#8 カケハシ</span><span class="badge second">#9 Sansan</span><span class="badge second">#10 Helpfeel</span></div>
+    </div>
+    <div class="card">
+      <div class="summary-number">1</div>
+      <h3>今回の核心</h3>
+      <p>SmartHRは第一陣へ。カケハシは第二陣へ。理由は、RC懸念が解けるなら、戦略的魅力度でSmartHRが上回るため。</p>
+      <div class="badges"><span class="badge first">SmartHR ↑</span><span class="badge second">カケハシ ↓</span></div>
+    </div>
+  </section>
+
+  <section class="section" id="context">
+    <h2>評価前提：第三者向けの読み方</h2>
+    <div class="grid cols-2">
+      <div class="card"><h3>評価対象者</h3><p>26歳、LIXIL営業3年。大手建材代理店のアカウントマネジメントを担当し、2025年2月に全国月間MVPを獲得。学生時代にはドロップシッピングで月商100万円超の小規模事業経験がある。2029年4月、30歳時点で起業判断ゲートを通過するため、今回の転職では単なる年収上げではなく、起業に使える経験・人脈・思考様式を得ることが目的。</p></div>
+      <div class="card"><h3>最低条件</h3><p>年収下限550万円、東京勤務、英語必須でないこと、非エンジニア文系でも応募可能であること。副業・個人開発時間として週10〜15時間を残したい。採用可能性は細かく点数化せず、「通る可能性が現実的にあるか」を見る。</p></div>
+      <div class="card"><h3>重視する経験</h3><p>ピュアセールスより、BizDev・新規事業・PMM/PdM接点・GTM・CS設計・プロダクトフィードバックなど、職域が広い経験を重視する。将来の起業に向けて、「売る」「顧客から学ぶ」「プロダクトに返す」「市場を作る」の循環に近い席ほど評価する。</p></div>
+      <div class="card"><h3>今回の注意</h3><p>「副業可」と書かれている会社の多くは、実態として「許可制」「事前申請制」である。これは副業禁止ではないことの確認にはなるが、自由な副業文化の証明ではない。よって本レポートでは副業明示を大きな加点にせず、むしろ確認事項として扱う。</p></div>
+    </div>
+  </section>
+
+  <section class="section" id="changes">
+    <h2>改訂ポイント：前回判断から何を変えたか</h2>
+    <div class="logic"><div class="logic-num">1</div><div><h3>SmartHRを第一陣へ繰り上げ</h3><p>前回はRC懸念を大きく見て保留寄りにしたが、RCが実務上乗り越えられるなら、SmartHRを落とす理由は薄い。SmartHRは、SaaSブランド、新規事業フェーズ、顧客の声をプロダクト/事業戦略へ戻す構造があり、カケハシより戦略的価値が高い。</p></div></div>
+    <div class="logic"><div class="logic-num">2</div><div><h3>カケハシを第二陣へ</h3><p>カケハシは悪い候補ではない。年収・働き方・職域は一定以上。ただし本人自身が「ピンとはこない」と書いており、AI Nativeでもない。副業可（事前申請制）も加点ではなく確認事項に戻すと、第一陣の6枠に入れる理由が弱くなる。</p></div></div>
+    <div class="logic"><div class="logic-num">3</div><div><h3>ランキングと応募フェーズを整合</h3><p>本レポートでは、優先度ランキング1〜6位を第一陣、7〜10位を第二陣とする。前回のように「ランキング下位だが第一陣」というねじれは解消した。これにより、第三者が読んでも応募順と判断順位が一致する。</p></div></div>
+    <div class="logic"><div class="logic-num">4</div><div><h3>副業可明示の扱いを修正</h3><p>許可制・申請制の副業明示は、制度上の余地を示す一方で、会社側が副業を管理する姿勢も示す。試用期間中NG、入社直後NG、業務優先を理由に不許可などのリスクがある。したがって、明示ありを大きな加点にせず、カジュアル面談での確認事項に落とした。</p></div></div>
+  </section>
+
+  <section class="section" id="logic">
+    <h2>判断ロジック：なぜこの6社か</h2>
+    <div class="matrix">
+      <div class="card"><h3>第一陣に必要な条件</h3><p>第一陣は「最も魅力的な会社」だけではなく、「来週出して勝負になる会社」で構成する。ただし今回から、ランキング上位と第一陣は一致させる。つまり、魅力はあるが応募準備が未完成な会社は、ランキング自体を第二陣側へ落とす。</p></div>
+      <div class="card"><h3>重みづけ</h3><p>最重視は、職域の広さと本人経験の接続。次に、AI Native度・新規事業性・ブランド・年収/働き方の現実性を見る。採用可能性だけでSansanに流れるのは、起業準備という目的から逆算すると弱い。</p></div>
+      <div class="card"><h3>RCの扱い</h3><p>RCは「第一陣から外す理由」ではなく、「応募前に協力者を確保する運用課題」として扱う。SmartHRやfreeeでRCがあるとしても、協力者設計ができるなら戦略的魅力度を優先する。</p></div>
+      <div class="card"><h3>副業の扱い</h3><p>副業明示なし＝即悪、ではない。副業明示あり＝即良、でもない。許可制/申請制は、運用次第ではむしろ慎重姿勢の証拠になる。本レポートでは、全社共通で「カジュアル面談で確認すべき論点」として扱う。</p></div>
+    </div>
+  </section>
+
+  <section class="section" id="order">
+    <h2>第一陣の応募順：ランキング上位6社をそのまま出す</h2>
+    <p>第一陣は、atama plus、LegalOn、freee、SmartHR、燈、アンドパッドの6社。順番は、職域の広さ・AI/新規事業性・採用可能性・本人経験の自然な接続を統合して決めた。</p>
+    <ol class="order"><li><span class="num">1</span><strong>atama plus</strong><small>法人営業／事業開発（企業向け「従業員教育プログラム / AIロー...</small></li><li><span class="num">2</span><strong>LegalOn</strong><small>BBD-22 事業開発（新規事業立ち上げ） / New Prod...</small></li><li><span class="num">3</span><strong>freee</strong><small>アカウントマネージャー（パートナーマーケター）...</small></li><li><span class="num">4</span><strong>SmartHR</strong><small>ソリューションセールス（情シス領域 / 新規事業立ち上げフェーズ...</small></li><li><span class="num">5</span><strong>燈</strong><small>CS / カスタマーサクセス（AI SaaS事業本部）...</small></li><li><span class="num">6</span><strong>アンドパッド</strong><small>住宅領域 エンタープライズセールス / アカウントマネージャー...</small></li></ol>
+    <div class="callout first"><p><strong>実務方針：</strong>1〜2位は高魅力かつ職域が広い本命、3〜4位はSaaSブランドと事業開発接点、5〜6位はAI Native/現職直結の実戦枠。第一陣の中にチャレンジ・ブランド・現職接続のバランスを作る。</p></div>
+  </section>
+
+  <section class="section" id="ranking">
+    <h2>10社優先度ランキング</h2>
+    <p>ここでのランキングは、応募優先順位そのもの。1〜6位が第一陣、7〜10位が第二陣。各社の一長一短を比較し、なぜ上か下かが分かるように整理した。</p>
+    <div class="table-wrap"><table><thead><tr><th>Rank</th><th>会社 / ポジション</th><th>応募フェーズ</th><th>第三者向け概要</th><th>順位の分岐点</th><th>主なリスク</th></tr></thead><tbody>
+    <tr>
+      <td class="rank-cell">#01</td>
+      <td class="company-cell"><strong>atama plus株式会社</strong><span>法人営業／事業開発（企業向け「従業員教育プログラム / AIロープレ」）</span></td>
+      <td><span class="phase first">第一陣</span></td>
+      <td>AI教材企業が法人向けに展開する、従業員教育・AIロープレ領域の法人営業／事業開発ポジション。</td>
+      <td>LegalOnとの差は“本人の熱量を作りやすい領域か”。freeeとの差は“職務内でプロダクト/AIに近いか”。SmartHRとの差は“AI商材そのものか”。この3点で上回るため1位。</td>
+      <td>副業可否の明示がない点と、企業教育/AIロープレ領域で副業テーマが競合しないかは要確認。ただし副業制度の不明さを上回るほど、本業側のリターンが大きい。</td>
+    </tr>
+
+    <tr>
+      <td class="rank-cell">#02</td>
+      <td class="company-cell"><strong>LegalOn Technologies株式会社</strong><span>BBD-22 事業開発（新規事業立ち上げ） / New Product</span></td>
+      <td><span class="phase first">第一陣</span></td>
+      <td>Legal AIプラットフォームの新規事業における、初期顧客獲得・GTM・CS設計・PM/開発連携ポジション。</td>
+      <td>freeeより職務内の新規事業性とAI-in-Roleが強い。SmartHRよりAI商材としての明確さがある。モノグサと近いが、LegalOnの方がMUSTの翻訳壁が低く、今すぐ第一陣で出しやすい。</td>
+      <td>副業可は許可制。これは副業禁止ではない安心材料ではあるが、加点ではなく確認事項として扱うべき。許可が下りない、試用期間中NG、入社後一定期間NGの可能性がある。また急成長企業ゆえ残業・組織負荷も確認が必要。</td>
+    </tr>
+
+    <tr>
+      <td class="rank-cell">#03</td>
+      <td class="company-cell"><strong>freee株式会社</strong><span>アカウントマネージャー（パートナーマーケター）</span></td>
+      <td><span class="phase first">第一陣</span></td>
+      <td>会計事務所を支援し、その先の中小企業・スモールビジネスへ価値を届けるパートナービジネス職。</td>
+      <td>SmartHRより上に置くのは、MUSTの噛み合いと職務説明のしやすさ。燈より上に置くのは、働き方・副業余白・ブランド再販価値の安定性。アンドパッドより上に置くのは、現職直結では劣るが、SaaS横展開とパートナービジネス資産が広いから。</td>
+      <td>副業/兼業の現行制度は採用ページでは明示なし。過去に副業OK実績はあるが、現行制度は確認必須。RCも実施可能性があるため、協力者の準備は必要。会計業界への関心を浅く語ると面接で弱い。</td>
+    </tr>
+
+    <tr>
+      <td class="rank-cell">#04</td>
+      <td class="company-cell"><strong>株式会社SmartHR</strong><span>ソリューションセールス（情シス領域 / 新規事業立ち上げフェーズ）</span></td>
+      <td><span class="phase first">第一陣</span></td>
+      <td>HR SaaS大手SmartHRの新規事業フェーズで、情シス領域の顧客課題を拾いプロダクト/事業戦略へ返すソリューションセールス。</td>
+      <td>カケハシを第二陣に落としてSmartHRを入れる判断は妥当。なぜなら、カケハシの“副業可（事前申請制）”は加点ではなく確認事項であり、戦略的魅力度ではSmartHRのブランド・新規事業・プロダクトFBの方が上だから。燈とは迷うが、燈はフル出社/副業不明の重さがあるため、総合ではSmartHRを上に置く。</td>
+      <td>副業明示なし、リモート頻度の実態不明、情シス領域の事前理解不足、RC対応が実務リスク。AI-in-Roleは弱い。情シス領域への関心や理解が浅いと、ブランド応募に見えやすい。</td>
+    </tr>
+
+    <tr>
+      <td class="rank-cell">#05</td>
+      <td class="company-cell"><strong>燈株式会社</strong><span>CS / カスタマーサクセス（AI SaaS事業本部）</span></td>
+      <td><span class="phase first">第一陣</span></td>
+      <td>松尾研発AIスタートアップで、建設・製造など産業領域向けAI SaaSの導入・活用・開発FBを担うCS。</td>
+      <td>アンドパッドより上に置くのは、AI Nativeの濃度と急成長環境の学習密度が高いから。SmartHRより下に置くのは、働き方の硬さと副業余白リスク。モノグサより上に置くのは、採用通過の現実性と現職接続が強いから。</td>
+      <td>原則フル出社が最大のリスク。副業可否も不明。AI Nativeの魅力に引っ張られ、週10〜15hの個人開発時間を失う可能性を軽視してはいけない。年収も応相談のため、下限確認が必要。</td>
+    </tr>
+
+    <tr>
+      <td class="rank-cell">#06</td>
+      <td class="company-cell"><strong>株式会社アンドパッド</strong><span>住宅領域 エンタープライズセールス / アカウントマネージャー</span></td>
+      <td><span class="phase first">第一陣</span></td>
+      <td>建設・住宅業界向けSaaSの住宅領域で、大手顧客のアカウントマネジメントや導入/BPRを担う職種。</td>
+      <td>モノグサより上に置くのは、第一陣に必要な“今の経歴で通せる確度”が高いから。燈より下に置くのは、AI Native度と成長環境の尖りで劣るから。カケハシより上に置くのは、本人の現職経験がより直接的に刺さるから。</td>
+      <td>職域がAM実行に閉じると、起業準備としてはやや弱い。副業明示なし。SaaS導入/BPR/プロジェクト推進の経験不足は、LIXILでの複数ステークホルダー調整で補う必要がある。</td>
+    </tr>
+
+    <tr>
+      <td class="rank-cell">#07</td>
+      <td class="company-cell"><strong>モノグサ株式会社</strong><span>新規事業｜エンタープライズ企業 事業開発セールス</span></td>
+      <td><span class="phase second_high">第二陣・高優先</span></td>
+      <td>記憶定着・学習プラットフォームを法人教育や人的資本領域へ広げる、新規事業寄りのエンタープライズ事業開発セールス。</td>
+      <td>カケハシより職域・興味・起業準備資産は上。Sansanよりも明らかに上。ただしアンドパッドより採用通過の準備負荷が高いため第二陣。SmartHRより職域の爆発力はあるが、応募即応性で負ける。</td>
+      <td>無形商材/IT営業MUSTが明確な壁。副業可明示はあるが、許可/申請制の運用なら加点ではなく確認事項。完全週休2日制の表記など働き方面も確認が必要。</td>
+    </tr>
+
+    <tr>
+      <td class="rank-cell">#08</td>
+      <td class="company-cell"><strong>株式会社カケハシ</strong><span>事業開発｜カスタマーサクセス（Enterprise CS領域）</span></td>
+      <td><span class="phase second">第二陣</span></td>
+      <td>薬局DX/ヘルスケアSaaS領域で、大型薬局顧客の活用支援・成功指標設計・アップセル・プロダクトFBを担うCS/BizDev職。</td>
+      <td>モノグサより下なのは、職域の広さと本人興味で負けるから。Sansanより上なのは、CS/BizDevとして成功指標設計やプロダクトFBがあり、単なる営業実行よりは資産性があるから。Helpfeelより上なのは、年収下限が安定しているから。</td>
+      <td>事業開発CSといっても、実態が導入/運用支援に寄る可能性がある。副業可は事前申請制で、試用期間中や入社直後に許可されないリスクがある。薬局DXへの興味が薄いと志望動機が弱くなる。</td>
+    </tr>
+
+    <tr>
+      <td class="rank-cell">#09</td>
+      <td class="company-cell"><strong>Sansan株式会社</strong><span>ソリューションセールス［Bill One］</span></td>
+      <td><span class="phase second">第二陣</span></td>
+      <td>Bill Oneの経理DX領域で、法人顧客へソリューション提案を行う大手SaaSの営業職。</td>
+      <td>カケハシより下に置くのは、職域が営業実行寄りで、プロダクト/CS/事業開発への接続が弱いから。Helpfeelより上に置くのは、年収下限が明確に本人条件を満たし、採用通過も読みやすいから。</td>
+      <td>ピュアセールス化、志望動機の弱さ、副業制度不明、AI-in-Roleの薄さ。入社後にノルマ達成中心の経験で終わる可能性がある。</td>
+    </tr>
+
+    <tr>
+      <td class="rank-cell">#10</td>
+      <td class="company-cell"><strong>Helpfeel株式会社</strong><span>アカウントエグゼクティブ</span></td>
+      <td><span class="phase second">第二陣</span></td>
+      <td>FAQ検索・ナレッジデータ領域のSaaSで、有形/無形不問の法人営業経験を活かせるAE職。</td>
+      <td>Sansanより働き方・AI文脈は強いが、年収下限のバイナリで負ける。カケハシより自由度は強い可能性があるが、年収条件と志望動機の作りやすさで劣る。</td>
+      <td>年収下限未達、AE職がどこまでプロダクトFBに触れるか、歓迎要件のレベル、RCの有無。AI文脈はあるが、職務でAIを深く扱えるかは不明。</td>
+    </tr></tbody></table></div>
+  </section>
+
+  <section class="section" id="details">
+    <h2>各社詳細分析</h2>
+    <p>以下は、10社を同じ基準で見た詳細評価。各社について、会社・職種の説明、第一陣/第二陣判断、順位理由、他社比較、リスク、確認事項を記載した。</p>
+    
+    <article class="company-card" id="rank-1">
+      <div class="company-head">
+        <div>
+          <div class="rank-label">PRIORITY RANK #01</div>
+          <h3 class="company-title">atama plus株式会社</h3>
+          <p class="company-pos">法人営業／事業開発（企業向け「従業員教育プログラム / AIロープレ」）</p>
+          <a class="company-link" href="https://herp.careers/v1/atamaplus/lKVPhgJxsnF-" target="_blank" rel="noreferrer">求人ページを見る →</a>
+        </div>
+        <div class="company-type">
+          <span class="phase first">第一陣</span>
+          <div class="badges"><span class="badge neutral">atama plus</span></div>
+        </div>
+      </div>
+      <div class="company-body">
+        <div class="mini-grid">
+          <div class="mini"><div class="label">第三者向け：会社・職種の説明</div><p>atama plusは、AIを活用した学習支援・教育領域の企業。今回の職種は、企業向けの従業員教育プログラムおよびAIロープレを売るだけでなく、新規顧客開拓、カスタマーサクセス、業界別戦略、学習体験設計、プロダクトフィードバック、新サービスモデル設計まで含む。営業という名だが、中身は“AI教育プロダクトの事業開発フロント”に近い。</p></div>
+          <div class="mini"><div class="label">第一陣 / 第二陣の判断</div><p>第一陣の先頭。今の職務経歴書を大きく変えずに出せ、かつ通過後の面接でも全国MVP・大手代理店AM・業務改善経験を一貫して語れる。第一陣の中でも、応募効果と転職後の資産性が最も両立している。</p></div>
+        </div>
+        <div class="analysis">
+          <div class="analysis-block"><h4>なぜこの順位か</h4><p>1位に置く理由は、本人の勝ち筋が最も自然に立つから。MUSTは「法人営業として高い実績3年以上目安」で、LIXIL営業3年と全国月間MVPが最短距離で刺さる。さらに年収750〜1,450万円で条件面も最上位、商材もAIロープレそのもので、AI-in-Roleがこじつけではない。LegalOnも同格級だが、atama plusは本人が興味を持てる“教育・人の能力向上”に近く、面接で熱量を作りやすい。freeeやSmartHRより職務内でAIとプロダクトFBに触れる確度が高く、燈より働き方・年収の不確実性が小さい。</p></div>
+          <div class="analysis-block"><h4>他社比較での分岐点</h4><p>LegalOnとの差は“本人の熱量を作りやすい領域か”。freeeとの差は“職務内でプロダクト/AIに近いか”。SmartHRとの差は“AI商材そのものか”。この3点で上回るため1位。</p></div>
+          <div class="analysis-block"><h4>リスク・減点要素</h4><p>副業可否の明示がない点と、企業教育/AIロープレ領域で副業テーマが競合しないかは要確認。ただし副業制度の不明さを上回るほど、本業側のリターンが大きい。</p></div>
+          <div class="analysis-block"><h4>次に確認すべきこと</h4><p>カジュアル面談では、実際の職務比率（新規営業/CS/プロダクトFB/サービス設計）、副業制度、平均退勤時間を確認。</p></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="company-card" id="rank-2">
+      <div class="company-head">
+        <div>
+          <div class="rank-label">PRIORITY RANK #02</div>
+          <h3 class="company-title">LegalOn Technologies株式会社</h3>
+          <p class="company-pos">BBD-22 事業開発（新規事業立ち上げ） / New Product</p>
+          <a class="company-link" href="https://herp.careers/v1/legalforce/M2fVkROmiPx9" target="_blank" rel="noreferrer">求人ページを見る →</a>
+        </div>
+        <div class="company-type">
+          <span class="phase first">第一陣</span>
+          <div class="badges"><span class="badge neutral">LegalOn</span></div>
+        </div>
+      </div>
+      <div class="company-body">
+        <div class="mini-grid">
+          <div class="mini"><div class="label">第三者向け：会社・職種の説明</div><p>LegalOnは、契約・法務領域を中心にAIプロダクトを展開するLegalTech企業。今回のNew Product職は、既存営業の一機能ではなく、新規事業の立ち上げフェーズで初期顧客獲得戦略、営業施策、GTM、CS設計、PM/開発連携、顧客フィードバックによる商品機能の磨き込みを担う。B2B SaaSだが、職域はかなり事業開発寄り。</p></div>
+          <div class="mini"><div class="label">第一陣 / 第二陣の判断</div><p>第一陣に入れる。年収560〜830万円は下限Passで、MUSTも広い。本人のLIXIL営業経験を“顧客接点から課題を拾い、事業側へ返す”文脈に翻訳できる。</p></div>
+        </div>
+        <div class="analysis">
+          <div class="analysis-block"><h4>なぜこの順位か</h4><p>2位に置く理由は、atama plusと同じく“AI×BizDev×職域の広さ”が明確だから。MUSTは顧客接点・営業経験で入りやすく、英語必須ではない。職務も初期顧客獲得、GTM、CS設計、PM/開発連携まで入るため、起業準備として必要な「市場から学ぶ→売る→プロダクトへ戻す」の循環がある。atama plusより下に置くのは、本人の興味領域としては教育/AIロープレの方が熱量を作りやすく、LegalTechは副業テーマとの競合線引きもやや面倒だから。</p></div>
+          <div class="analysis-block"><h4>他社比較での分岐点</h4><p>freeeより職務内の新規事業性とAI-in-Roleが強い。SmartHRよりAI商材としての明確さがある。モノグサと近いが、LegalOnの方がMUSTの翻訳壁が低く、今すぐ第一陣で出しやすい。</p></div>
+          <div class="analysis-block"><h4>リスク・減点要素</h4><p>副業可は許可制。これは副業禁止ではない安心材料ではあるが、加点ではなく確認事項として扱うべき。許可が下りない、試用期間中NG、入社後一定期間NGの可能性がある。また急成長企業ゆえ残業・組織負荷も確認が必要。</p></div>
+          <div class="analysis-block"><h4>次に確認すべきこと</h4><p>副業許可の運用、実残業、New Product内でのPM/開発連携の実態、英語使用の有無を確認。</p></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="company-card" id="rank-3">
+      <div class="company-head">
+        <div>
+          <div class="rank-label">PRIORITY RANK #03</div>
+          <h3 class="company-title">freee株式会社</h3>
+          <p class="company-pos">アカウントマネージャー（パートナーマーケター）</p>
+          <a class="company-link" href="https://hire.wantedly.com/careers/freee/career_page_all_jobs/2978" target="_blank" rel="noreferrer">求人ページを見る →</a>
+        </div>
+        <div class="company-type">
+          <span class="phase first">第一陣</span>
+          <div class="badges"><span class="badge neutral">freee</span></div>
+        </div>
+      </div>
+      <div class="company-body">
+        <div class="mini-grid">
+          <div class="mini"><div class="label">第三者向け：会社・職種の説明</div><p>freeeは、会計・人事労務などのクラウドSaaSを展開する国内SaaS大手。今回のパートナーマーケターは、会計事務所の業務改善やビジネスモデル変革を年単位で支援し、会計事務所を通じて中小企業へfreeeの価値を届ける職種。純粋な新規営業というより、パートナーアカウントマネジメント、コンサルティング、業界内でのムーブメント形成に近い。</p></div>
+          <div class="mini"><div class="label">第一陣 / 第二陣の判断</div><p>第一陣に入れる。第一陣には“高魅力チャレンジ”だけでなく、内定率を現実的に作る候補が必要。freeeは書類通過の筋が強く、ブランドも強く、職域も完全な兵隊営業ではない。</p></div>
+        </div>
+        <div class="analysis">
+          <div class="analysis-block"><h4>なぜこの順位か</h4><p>3位に置く理由は、採用可能性・ブランド・中期キャリアの総合点が高いから。MUSTは法人対応3年以上、基本的なITリテラシー、粘り強い提案、中長期関係構築で、本人経験と非常に噛み合う。atama plusやLegalOnほどAI-in-Roleは強くないが、freee出身という市場価値、パートナービジネス経験、SaaS組織での横展開可能性がある。SmartHRと比較すると、freeeはMUST充足がより素直で、職務内容も会計事務所支援/パートナービジネスとして説明しやすい。</p></div>
+          <div class="analysis-block"><h4>他社比較での分岐点</h4><p>SmartHRより上に置くのは、MUSTの噛み合いと職務説明のしやすさ。燈より上に置くのは、働き方・副業余白・ブランド再販価値の安定性。アンドパッドより上に置くのは、現職直結では劣るが、SaaS横展開とパートナービジネス資産が広いから。</p></div>
+          <div class="analysis-block"><h4>リスク・減点要素</h4><p>副業/兼業の現行制度は採用ページでは明示なし。過去に副業OK実績はあるが、現行制度は確認必須。RCも実施可能性があるため、協力者の準備は必要。会計業界への関心を浅く語ると面接で弱い。</p></div>
+          <div class="analysis-block"><h4>次に確認すべきこと</h4><p>副業可否、出社頻度、RC対象者の範囲、パートナーマーケターがどこまで施策設計/業界企画に関われるかを確認。</p></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="company-card" id="rank-4">
+      <div class="company-head">
+        <div>
+          <div class="rank-label">PRIORITY RANK #04</div>
+          <h3 class="company-title">株式会社SmartHR</h3>
+          <p class="company-pos">ソリューションセールス（情シス領域 / 新規事業立ち上げフェーズ）</p>
+          <a class="company-link" href="https://open.talentio.com/r/1/c/smarthr/pages/116247" target="_blank" rel="noreferrer">求人ページを見る →</a>
+        </div>
+        <div class="company-type">
+          <span class="phase first">第一陣</span>
+          <div class="badges"><span class="badge neutral">SmartHR</span></div>
+        </div>
+      </div>
+      <div class="company-body">
+        <div class="mini-grid">
+          <div class="mini"><div class="label">第三者向け：会社・職種の説明</div><p>SmartHRは、人事労務領域のクラウドSaaSを代表する企業。今回の職種は、既存主力プロダクトの定型営業ではなく、情シス領域/新規事業立ち上げフェーズのソリューションセールス。法人営業経験をベースに、顧客課題の理解、解決策提案、顧客の声をプロダクトや事業戦略へ還元することが期待される。</p></div>
+          <div class="mini"><div class="label">第一陣 / 第二陣の判断</div><p>第一陣に入れる。本人の指摘どおり、既存ランキングでもSmartHRは上位に置くべき候補で、RCが実務上解けるならカケハシより優先すべき。カケハシは条件面の安全性はあるが、本人の興味・AI Native・ブランド・新規事業性でSmartHRが上回る。</p></div>
+        </div>
+        <div class="analysis">
+          <div class="analysis-block"><h4>なぜこの順位か</h4><p>4位に繰り上げる。前回はRC懸念で保留寄りに扱ったが、RCが乗り越えられるなら第一陣から外す理由は弱い。SmartHRは、freeeと同じく“出身ブランドの箔”が強く、新規事業フェーズであるため通常のピュアセールスより職域が広い。燈のAI Nativeほど尖ってはいないが、SmartHRは組織としての再販価値、SaaS事業の型、顧客の声をプロダクトへ戻す経験が得やすい。アンドパッドより現職直結度は落ちるが、将来の起業準備としてはSaaS新規事業の汎用資産が大きい。</p></div>
+          <div class="analysis-block"><h4>他社比較での分岐点</h4><p>カケハシを第二陣に落としてSmartHRを入れる判断は妥当。なぜなら、カケハシの“副業可（事前申請制）”は加点ではなく確認事項であり、戦略的魅力度ではSmartHRのブランド・新規事業・プロダクトFBの方が上だから。燈とは迷うが、燈はフル出社/副業不明の重さがあるため、総合ではSmartHRを上に置く。</p></div>
+          <div class="analysis-block"><h4>リスク・減点要素</h4><p>副業明示なし、リモート頻度の実態不明、情シス領域の事前理解不足、RC対応が実務リスク。AI-in-Roleは弱い。情シス領域への関心や理解が浅いと、ブランド応募に見えやすい。</p></div>
+          <div class="analysis-block"><h4>次に確認すべきこと</h4><p>RC対象範囲、副業制度、出社頻度、情シス領域の実際の顧客課題、プロダクト/事業戦略へのFBループの強さを確認。</p></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="company-card" id="rank-5">
+      <div class="company-head">
+        <div>
+          <div class="rank-label">PRIORITY RANK #05</div>
+          <h3 class="company-title">燈株式会社</h3>
+          <p class="company-pos">CS / カスタマーサクセス（AI SaaS事業本部）</p>
+          <a class="company-link" href="https://hrmos.co/pages/akariinc/jobs/1991348711453163520" target="_blank" rel="noreferrer">求人ページを見る →</a>
+        </div>
+        <div class="company-type">
+          <span class="phase first">第一陣</span>
+          <div class="badges"><span class="badge neutral">燈</span></div>
+        </div>
+      </div>
+      <div class="company-body">
+        <div class="mini-grid">
+          <div class="mini"><div class="label">第三者向け：会社・職種の説明</div><p>燈は、東大松尾研発のAIスタートアップとして、建設・製造などの基幹産業向けにAI SaaSや産業DXプロダクトを展開する企業。今回のCSは、導入支援、操作説明、導入コンサルティング、問い合わせ対応、顧客要望の開発フィードバックまで一気通貫で担当する。CSではあるが、分業型の問い合わせ対応に閉じない。</p></div>
+          <div class="mini"><div class="label">第一陣 / 第二陣の判断</div><p>第一陣に入れる。10社の中で、AI Native企業の現場に入れる希少性が高く、建設/製造文脈で本人経験を活かせる。CSでも開発FBがあり、本人が懸念した兵隊感は想定より弱い。</p></div>
+        </div>
+        <div class="analysis">
+          <div class="analysis-block"><h4>なぜこの順位か</h4><p>5位に置く。AI Native度と現職経験の接続では非常に強い。建設・製造・物流などの現場理解が歓迎され、LIXIL営業経験はかなり刺さる。採用通過もCSなら読みやすい。一方で、原則フル出社と副業明示なしは重い。本人が“AI Native+急成長ならフル出社を許容”と判断しているため第一陣に残すが、自由度・副業余白まで含めるとSmartHR/freeeより下に置く。</p></div>
+          <div class="analysis-block"><h4>他社比較での分岐点</h4><p>アンドパッドより上に置くのは、AI Nativeの濃度と急成長環境の学習密度が高いから。SmartHRより下に置くのは、働き方の硬さと副業余白リスク。モノグサより上に置くのは、採用通過の現実性と現職接続が強いから。</p></div>
+          <div class="analysis-block"><h4>リスク・減点要素</h4><p>原則フル出社が最大のリスク。副業可否も不明。AI Nativeの魅力に引っ張られ、週10〜15hの個人開発時間を失う可能性を軽視してはいけない。年収も応相談のため、下限確認が必要。</p></div>
+          <div class="analysis-block"><h4>次に確認すべきこと</h4><p>副業可否、平均退勤時間、週の出社負荷、CSが開発FBにどこまで関与するか、年収下限を確認。</p></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="company-card" id="rank-6">
+      <div class="company-head">
+        <div>
+          <div class="rank-label">PRIORITY RANK #06</div>
+          <h3 class="company-title">株式会社アンドパッド</h3>
+          <p class="company-pos">住宅領域 エンタープライズセールス / アカウントマネージャー</p>
+          <a class="company-link" href="https://hrmos.co/pages/andpad/jobs/biz0000321" target="_blank" rel="noreferrer">求人ページを見る →</a>
+        </div>
+        <div class="company-type">
+          <span class="phase first">第一陣</span>
+          <div class="badges"><span class="badge neutral">アンドパッド</span></div>
+        </div>
+      </div>
+      <div class="company-body">
+        <div class="mini-grid">
+          <div class="mini"><div class="label">第三者向け：会社・職種の説明</div><p>アンドパッドは、建設・住宅業界向けの施工管理・業務改善SaaSを展開する企業。今回の住宅領域エンタープライズAMは、住宅・建設領域の大手顧客に対して、アカウントプラン、既存深耕、導入/BPR/プロジェクト推進を担う。LIXILの建材・代理店営業経験と業界文脈がかなり近い。</p></div>
+          <div class="mini"><div class="label">第一陣 / 第二陣の判断</div><p>第一陣に入れる。atama plus/LegalOn/SmartHRのようなチャレンジ枠だけでは応募ポートフォリオが尖りすぎる。アンドパッドは本人固有の業界経験が武器になるため、現実的な内定導線として外すべきではない。</p></div>
+        </div>
+        <div class="analysis">
+          <div class="analysis-block"><h4>なぜこの順位か</h4><p>6位。現職経験の直接活用という一点では10社最強クラス。歓迎要件に建設業界営業経験・設備建材メーカー経験が明示され、LIXIL経験を最も自然に評価してもらえる。第一陣に“通りやすさ”の柱を置く意味で重要。ただし、AI-in-Roleは薄く、Product Decisionも間接的で、転職後にAM実行へ閉じるリスクがあるため6位に留める。</p></div>
+          <div class="analysis-block"><h4>他社比較での分岐点</h4><p>モノグサより上に置くのは、第一陣に必要な“今の経歴で通せる確度”が高いから。燈より下に置くのは、AI Native度と成長環境の尖りで劣るから。カケハシより上に置くのは、本人の現職経験がより直接的に刺さるから。</p></div>
+          <div class="analysis-block"><h4>リスク・減点要素</h4><p>職域がAM実行に閉じると、起業準備としてはやや弱い。副業明示なし。SaaS導入/BPR/プロジェクト推進の経験不足は、LIXILでの複数ステークホルダー調整で補う必要がある。</p></div>
+          <div class="analysis-block"><h4>次に確認すべきこと</h4><p>AMの職務が単なる既存深耕に閉じないか、プロダクトFB・事業企画・新規領域への関与があるか、リモート/副業可否を確認。</p></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="company-card" id="rank-7">
+      <div class="company-head">
+        <div>
+          <div class="rank-label">PRIORITY RANK #07</div>
+          <h3 class="company-title">モノグサ株式会社</h3>
+          <p class="company-pos">新規事業｜エンタープライズ企業 事業開発セールス</p>
+          <a class="company-link" href="https://herp.careers/v1/monoxer/09k-OvxdSTg5" target="_blank" rel="noreferrer">求人ページを見る →</a>
+        </div>
+        <div class="company-type">
+          <span class="phase second_high">第二陣・高優先</span>
+          <div class="badges"><span class="badge neutral">モノグサ</span></div>
+        </div>
+      </div>
+      <div class="company-body">
+        <div class="mini-grid">
+          <div class="mini"><div class="label">第三者向け：会社・職種の説明</div><p>モノグサは、記憶定着・学習支援プロダクトを展開する企業。今回の新規事業エンタープライズ職は、大手企業向けに人材育成・人的資本経営・セールス育成などのテーマで、売れる仕組みづくり、市場仮説検証、経営層折衝、PdM/エンジニア/マーケ連携、PMM/PdM的役割まで担う。職域だけ見れば10社中でもかなり強い。</p></div>
+          <div class="mini"><div class="label">第一陣 / 第二陣の判断</div><p>第二陣の先頭。応募書類の専用チューニングが終わり次第、早めに出すべき。第一陣ではないが、放置してよい候補ではない。</p></div>
+        </div>
+        <div class="analysis">
+          <div class="analysis-block"><h4>なぜこの順位か</h4><p>7位だが、魅力が低いわけではない。むしろ職域と本人興味では上位。第一陣から外す理由は、IT/人材/無形商材の法人営業3年以上というMUST壁。ここを雑に出すと、せっかくの高魅力候補を無駄撃ちする。第一陣の上位6社は、今の職務経歴を比較的素直に出しても勝負になるが、モノグサは“有形商材営業を無形価値提供として再編集する”準備が必要。</p></div>
+          <div class="analysis-block"><h4>他社比較での分岐点</h4><p>カケハシより職域・興味・起業準備資産は上。Sansanよりも明らかに上。ただしアンドパッドより採用通過の準備負荷が高いため第二陣。SmartHRより職域の爆発力はあるが、応募即応性で負ける。</p></div>
+          <div class="analysis-block"><h4>リスク・減点要素</h4><p>無形商材/IT営業MUSTが明確な壁。副業可明示はあるが、許可/申請制の運用なら加点ではなく確認事項。完全週休2日制の表記など働き方面も確認が必要。</p></div>
+          <div class="analysis-block"><h4>次に確認すべきこと</h4><p>無形商材MUSTの解釈、LIXIL経験の受け止め、PMM/PdM的関与の実態、副業制度の運用を確認。</p></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="company-card" id="rank-8">
+      <div class="company-head">
+        <div>
+          <div class="rank-label">PRIORITY RANK #08</div>
+          <h3 class="company-title">株式会社カケハシ</h3>
+          <p class="company-pos">事業開発｜カスタマーサクセス（Enterprise CS領域）</p>
+          <a class="company-link" href="https://herp.careers/v1/kakehashiinc/019bd552-8ee3-700c-ba17-ef4c4f4c6d4b" target="_blank" rel="noreferrer">求人ページを見る →</a>
+        </div>
+        <div class="company-type">
+          <span class="phase second">第二陣</span>
+          <div class="badges"><span class="badge neutral">カケハシ</span></div>
+        </div>
+      </div>
+      <div class="company-body">
+        <div class="mini-grid">
+          <div class="mini"><div class="label">第三者向け：会社・職種の説明</div><p>カケハシは、薬局DX・ヘルスケアSaaSを展開する企業。今回の事業開発CSは、Enterprise顧客に対して導入・活用支援を行い、成功指標設計、アップセル/クロスセル、広いステークホルダー巻き込み、顧客要望のプロダクトフィードバックを担う。CS実行に閉じず、事業開発要素はある。</p></div>
+          <div class="mini"><div class="label">第一陣 / 第二陣の判断</div><p>第二陣へ落とす。第一陣の6枠に入れるには、本人の熱量・AI/新規事業性・ブランド・職域の尖りが足りない。安定枠としては悪くないが、第一陣はSmartHRを優先する方が筋が良い。</p></div>
+        </div>
+        <div class="analysis">
+          <div class="analysis-block"><h4>なぜこの順位か</h4><p>8位。年収650〜800万円、リモート可、フルフレックス、採用要件も比較的緩めで、安全性は高い。ただし本人自身が“ピンとはこない”と感じており、AI Nativeでもなく、本人の明記した加点軸との接続が弱い。前回は副業可（事前申請制）を強く見すぎたが、申請制はむしろ運用ハードルでもある。副業明示を加点しないなら、SmartHRより上に置く理由はない。</p></div>
+          <div class="analysis-block"><h4>他社比較での分岐点</h4><p>モノグサより下なのは、職域の広さと本人興味で負けるから。Sansanより上なのは、CS/BizDevとして成功指標設計やプロダクトFBがあり、単なる営業実行よりは資産性があるから。Helpfeelより上なのは、年収下限が安定しているから。</p></div>
+          <div class="analysis-block"><h4>リスク・減点要素</h4><p>事業開発CSといっても、実態が導入/運用支援に寄る可能性がある。副業可は事前申請制で、試用期間中や入社直後に許可されないリスクがある。薬局DXへの興味が薄いと志望動機が弱くなる。</p></div>
+          <div class="analysis-block"><h4>次に確認すべきこと</h4><p>副業申請の運用、CS/BizDev比率、アップセル・プロダクトFBの裁量、薬局DXへの志望動機が成立するかを確認。</p></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="company-card" id="rank-9">
+      <div class="company-head">
+        <div>
+          <div class="rank-label">PRIORITY RANK #09</div>
+          <h3 class="company-title">Sansan株式会社</h3>
+          <p class="company-pos">ソリューションセールス［Bill One］</p>
+          <a class="company-link" href="https://open.talentio.com/r/1/c/sansan/pages/121037" target="_blank" rel="noreferrer">求人ページを見る →</a>
+        </div>
+        <div class="company-type">
+          <span class="phase second">第二陣</span>
+          <div class="badges"><span class="badge neutral">Sansan</span></div>
+        </div>
+      </div>
+      <div class="company-body">
+        <div class="mini-grid">
+          <div class="mini"><div class="label">第三者向け：会社・職種の説明</div><p>Sansanは、名刺管理やBill Oneなどを展開する国内SaaS大手。今回のBill Oneソリューションセールスは、経理・請求書領域の顧客課題をヒアリングし、決裁層への提案、IS/マーケとの連携、顧客要望の開発フィードバックを行う。完全なインサイドセールスよりは広いが、基本は営業実行職。</p></div>
+          <div class="mini"><div class="label">第一陣 / 第二陣の判断</div><p>第二陣。第一陣が不調だった場合の補欠としては有効だが、最初から出すほどの戦略的必然性はない。採用されやすいから応募する、だけでは転職目的が薄まる。</p></div>
+        </div>
+        <div class="analysis">
+          <div class="analysis-block"><h4>なぜこの順位か</h4><p>9位。年収635〜922万円、法人営業3年以上、卓越成果というMUSTは本人に合う。採用通過だけなら悪くない。ただし、本人メモの通り“営業組織色が強い”“AIも関係ない”“ただのデカい会社”という懸念が重い。第一陣の貴重な枠を使うには、AI Native度、職域の広さ、本人興味、起業準備資産のどれも上位に届かない。</p></div>
+          <div class="analysis-block"><h4>他社比較での分岐点</h4><p>カケハシより下に置くのは、職域が営業実行寄りで、プロダクト/CS/事業開発への接続が弱いから。Helpfeelより上に置くのは、年収下限が明確に本人条件を満たし、採用通過も読みやすいから。</p></div>
+          <div class="analysis-block"><h4>リスク・減点要素</h4><p>ピュアセールス化、志望動機の弱さ、副業制度不明、AI-in-Roleの薄さ。入社後にノルマ達成中心の経験で終わる可能性がある。</p></div>
+          <div class="analysis-block"><h4>次に確認すべきこと</h4><p>営業裁量、開発FBの実態、副業制度、Bill One領域への興味が本当に作れるかを確認。</p></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="company-card" id="rank-10">
+      <div class="company-head">
+        <div>
+          <div class="rank-label">PRIORITY RANK #10</div>
+          <h3 class="company-title">Helpfeel株式会社</h3>
+          <p class="company-pos">アカウントエグゼクティブ</p>
+          <a class="company-link" href="https://herp.careers/v1/notainc/l4OcUcPItDK5" target="_blank" rel="noreferrer">求人ページを見る →</a>
+        </div>
+        <div class="company-type">
+          <span class="phase second">第二陣</span>
+          <div class="badges"><span class="badge neutral">Helpfeel</span></div>
+        </div>
+      </div>
+      <div class="company-body">
+        <div class="mini-grid">
+          <div class="mini"><div class="label">第三者向け：会社・職種の説明</div><p>Helpfeelは、FAQ検索・ナレッジ共有・AI検索文脈のプロダクトを展開する企業。今回のAE職は、法人顧客へソリューション提案を行い、営業/CSワークフロー、数値分析、顧客からのプロダクトフィードバックにも関わる。フルリモート可・フルフレックスという働き方は10社の中でも魅力的。</p></div>
+          <div class="mini"><div class="label">第一陣 / 第二陣の判断</div><p>第二陣。年収確認から入るべき候補であり、第一陣の枠を使う会社ではない。働き方は強いが、キャリアの主目的は“楽に働く”ではなく、起業判断ゲートに向けた資産形成である。</p></div>
+        </div>
+        <div class="analysis">
+          <div class="analysis-block"><h4>なぜこの順位か</h4><p>10位。働き方だけ見ればかなり強いし、AEのMUSTも法人営業2年以上かつ有形/無形不問で本人に優しい。ただし年収下限540万円は、本人の最低ライン550万円をわずかに下回る。ここを例外扱いすると、今回の判断フレームの“最低ラインはバイナリ”という前提が崩れる。年収600万円以上で現実的に提示される確認が取れれば再浮上するが、現時点では最下位。</p></div>
+          <div class="analysis-block"><h4>他社比較での分岐点</h4><p>Sansanより働き方・AI文脈は強いが、年収下限のバイナリで負ける。カケハシより自由度は強い可能性があるが、年収条件と志望動機の作りやすさで劣る。</p></div>
+          <div class="analysis-block"><h4>リスク・減点要素</h4><p>年収下限未達、AE職がどこまでプロダクトFBに触れるか、歓迎要件のレベル、RCの有無。AI文脈はあるが、職務でAIを深く扱えるかは不明。</p></div>
+          <div class="analysis-block"><h4>次に確認すべきこと</h4><p>年収600万円以上の提示可能性、AEの裁量、プロダクトFBの実態、副業制度、RC有無を最初に確認。</p></div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section class="section" id="actions">
+    <h2>応募前の実務アクション</h2>
+    <div class="grid cols-2">
+      <div class="card"><h3>SmartHR / freee のRC準備</h3><p>RCは第一陣除外理由ではないが、準備なしで進めると途中で詰まる。直属上司でなくてもよい範囲、先輩・同僚可否、現職接触の有無を確認し、協力者候補を先に洗い出す。</p></div>
+      <div class="card"><h3>副業制度の確認質問</h3><p>「副業可ですか」では足りない。試用期間中、入社後1年以内、競業判断、個人開発/SaaS制作、収益化、申請却下時の扱いを具体的に聞く。</p></div>
+      <div class="card"><h3>モノグサ専用準備</h3><p>第二陣の先頭。無形商材MUSTを突破するため、代理店戦略提案、勉強会企画、業務改善、顧客行動変容支援を“無形価値提供”として再編集する。</p></div>
+      <div class="card"><h3>Sansan / Helpfeel の扱い</h3><p>Sansanは第一陣不調時の補欠。Helpfeelは年収600万円以上の可能性確認が取れた場合のみ再浮上。どちらも最初に出す会社ではない。</p></div>
+    </div>
+    <div class="callout neutral"><p><strong>最終結論：</strong>SmartHRを第一陣、カケハシを第二陣へ変更する判断は妥当。RC懸念が解けた以上、SmartHRを外してカケハシを入れるより、SmartHRを入れてカケハシを後続に回す方が、本人の戦略軸・職域重視・ブランド価値の観点で一貫している。</p></div>
+  </section>
+
+  <div class="footer">Source: 添付HTML 2件（個別評価 第1〜5社 / 第6〜10社）および Google Spreadsheet「転職先15_完成版」分析シート。Design: modern Japanese SaaS style.</div>
+</div>
+</body>
+</html>
