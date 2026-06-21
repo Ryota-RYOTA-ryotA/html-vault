@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>㈱ウィルオブ・コンストラクションについて</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FBF7EF;
+    --paper:#FFFDF8;
+    --ink:#3A2E22;
+    --ink-soft:#7E6B55;
+    --brown:#5A4632;
+    --brown-deep:#6B5B4D;
+    --terra:#C26B3D;
+    --gold:#B98A35;
+    --rule:#EBE1D0;
+    --note-bg:#F6ECD9;
+    --note-bar:#C26B3D;
+    --note-label:#9C5A2E;
+    --ins-bg:#ECEFE0;
+    --ins-bar:#7F8A4E;
+    --ins-label:#5E6A33;
+    --data:#B4452C;
+    --shadow:0 1px 2px rgba(90,70,50,.05),0 10px 30px rgba(90,70,50,.08);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    font-size:17px;line-height:1.94;-webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:56px 22px 80px}
+
+  /* header */
+  header.doc{margin-bottom:32px}
+  h1.doc-title{font-family:"Zen Maru Gothic",sans-serif;font-weight:700;
+    font-size:2.05rem;line-height:1.45;margin:0;color:var(--ink)}
+
+  /* toc */
+  nav.toc{margin:30px 0 46px;padding:20px 24px;background:var(--paper);
+    border:1px solid var(--rule);border-radius:18px;box-shadow:var(--shadow)}
+  nav.toc p{margin:0 0 12px;font-size:.78rem;font-weight:700;
+    letter-spacing:.12em;color:var(--ink-soft)}
+  nav.toc ol{margin:0;padding:0;list-style:none;
+    display:grid;grid-template-columns:1fr 1fr;gap:4px 24px}
+  nav.toc a{display:flex;align-items:baseline;gap:.55em;color:var(--ink);
+    text-decoration:none;font-size:.95rem;padding:6px 0}
+  nav.toc a .n{font-family:"Zen Maru Gothic",sans-serif;color:var(--terra);
+    font-weight:700;width:1.4em;flex:none}
+  nav.toc a span:last-child{border-bottom:1px solid transparent;padding-bottom:1px}
+  nav.toc a:hover span:last-child{border-bottom-color:var(--terra)}
+
+  /* hero */
+  .hero{background:var(--brown-deep);color:#fff;border-radius:24px;
+    padding:40px 36px 34px;margin-bottom:52px;box-shadow:var(--shadow)}
+  .hero-kicker{font-size:.78rem;letter-spacing:.22em;font-weight:700;
+    color:#E0A878;margin:0 0 16px}
+  .hero h2{font-family:"Zen Maru Gothic",sans-serif;font-weight:700;
+    font-size:2rem;line-height:1.45;margin:0 0 8px;color:#fff}
+  .hero .lead{font-size:1.05rem;color:#F2E7DB;margin:0 0 22px;font-weight:500;line-height:1.8}
+  .hero ol.reasons{margin:0;padding:0;list-style:none;counter-reset:r}
+  .hero ol.reasons li{counter-increment:r;position:relative;
+    padding:13px 0 13px 46px;border-top:1px solid rgba(255,255,255,.15);
+    color:#EFE6DA;font-size:1rem}
+  .hero ol.reasons li:before{content:counter(r);position:absolute;left:0;top:11px;
+    width:30px;height:30px;border:1.5px solid #B07E54;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-family:"Zen Maru Gothic",sans-serif;font-size:.95rem;color:#E0A878;font-weight:700}
+  .hero ol.reasons li b{color:#fff;font-weight:700}
+
+  /* sections */
+  section.blk{margin-bottom:50px;scroll-margin-top:20px}
+  h2.sec{font-family:"Zen Maru Gothic",sans-serif;font-weight:700;
+    font-size:1.5rem;color:var(--ink);margin:0 0 22px;padding-bottom:13px;
+    border-bottom:2px solid var(--terra);display:flex;align-items:baseline;gap:.55em}
+  h2.sec .num{width:1.7rem;height:1.7rem;flex:none;background:var(--terra);
+    color:#fff;border-radius:50%;display:inline-flex;align-items:center;
+    justify-content:center;font-size:.95rem;align-self:center}
+  h2.sec .tail{font-size:.72rem;color:var(--ink-soft);font-weight:500;
+    font-family:"Noto Sans JP",sans-serif}
+  h3.layer{font-family:"Zen Maru Gothic",sans-serif;font-size:1.04rem;
+    font-weight:700;color:#fff;background:var(--brown);display:inline-block;
+    padding:6px 18px;border-radius:14px;margin:30px 0 16px}
+  h4.pt{font-family:"Zen Maru Gothic",sans-serif;font-size:1.12rem;font-weight:700;
+    color:var(--ink);margin:26px 0 10px;line-height:1.5}
+
+  p{margin:0 0 16px}
+  strong{font-weight:700;color:var(--ink)}
+
+  /* ---- CARD-STYLE LISTS (left accent, no dot) ---- */
+  .blk ul{margin:0 0 16px;padding-left:0;list-style:none}
+  .blk ul li{padding:14px 20px;margin-bottom:10px;
+    background:var(--paper);border:1px solid var(--rule);
+    border-left:3px solid var(--terra);
+    border-radius:0 14px 14px 0;
+    box-shadow:0 1px 3px rgba(90,70,50,.04)}
+
+  .source{font-size:.84rem;color:var(--ink-soft);line-height:1.6;margin:-6px 0 18px}
+  .source a{color:var(--note-label);word-break:break-all}
+
+  /* SIGNATURE blocks */
+  aside.note{background:var(--note-bg);border-left:5px solid var(--note-bar);
+    border-radius:0 16px 16px 0;padding:17px 22px 5px;margin:20px 0 24px}
+  aside.note .label{display:inline-flex;align-items:center;gap:8px;
+    font-family:"Zen Maru Gothic",sans-serif;font-size:.82rem;font-weight:700;
+    letter-spacing:.04em;color:var(--note-label);margin-bottom:9px}
+  aside.note .label:before{content:"";width:15px;height:15px;border-radius:50%;
+    border:2px solid var(--note-bar);
+    background:radial-gradient(circle at 50% 50%,var(--note-bar) 0 3px,transparent 4px)}
+  aside.note p{margin:0 0 12px;color:#2E2419}
+  aside.note.insight{background:var(--ins-bg);border-left-color:var(--ins-bar)}
+  aside.note.insight .label{color:var(--ins-label)}
+  aside.note.insight .label:before{border-color:var(--ins-bar);
+    background:radial-gradient(circle at 50% 50%,var(--ins-bar) 0 3px,transparent 4px)}
+
+  /* data compare */
+  .data{background:var(--paper);border:1px solid var(--rule);border-radius:18px;
+    padding:24px 26px;margin:18px 0 22px;box-shadow:var(--shadow)}
+  .data .cap{font-family:"Zen Maru Gothic",sans-serif;font-size:.85rem;font-weight:700;
+    letter-spacing:.04em;color:var(--ink-soft);margin:0 0 18px;text-align:center}
+  .compare{display:flex;align-items:stretch;gap:14px}
+  .stat{flex:1;text-align:center;background:#FAF4E9;border-radius:16px;
+    padding:18px 12px;border:1px solid var(--rule)}
+  .stat .lbl{display:block;font-size:.82rem;font-weight:700;color:var(--ink-soft);margin-bottom:6px}
+  .stat .big{display:block;font-family:"Zen Maru Gothic",sans-serif;
+    font-size:2.7rem;font-weight:700;line-height:1.05;color:var(--brown)}
+  .stat .period{display:block;font-size:.78rem;color:var(--ink-soft);margin-top:4px}
+  .stat.alert{background:#FBEDE8;border-color:#E7C3B6}
+  .stat.alert .big{color:var(--data)}
+  .vs{flex:none;align-self:center;font-family:"Zen Maru Gothic",sans-serif;
+    font-size:.95rem;font-weight:700;color:var(--ink-soft)}
+
+  /* summary */
+  .blk.sum ul li{background:transparent;border:none;box-shadow:none;
+    border-left:none;padding:6px 0 6px 30px;position:relative}
+  .blk.sum ul li:before{content:"✓";position:absolute;left:2px;top:.15em;
+    color:var(--terra);font-weight:700;font-size:1.05rem}
+  .closing{background:var(--note-bg);border-left:5px solid var(--terra);
+    border-radius:0 16px 16px 0;padding:19px 23px;margin-top:8px;font-weight:500;color:#2E2419}
+
+  /* footer */
+  footer.src{margin-top:62px;padding-top:26px;border-top:1px solid var(--rule)}
+  footer.src h2{font-family:"Zen Maru Gothic",sans-serif;font-size:1rem;
+    color:var(--ink-soft);letter-spacing:.04em;margin:0 0 16px}
+  footer.src ul{list-style:none;margin:0 0 20px;padding:0}
+  footer.src li{font-size:.84rem;color:var(--ink-soft);line-height:1.7;
+    margin-bottom:9px;padding-left:14px;position:relative;
+    background:transparent;border:none;box-shadow:none;border-left:none;border-radius:0}
+  footer.src li:before{content:"–";position:absolute;left:0;color:var(--terra)}
+  footer.src a{color:var(--note-label);word-break:break-all}
+  .note-foot{font-size:.8rem;color:var(--ink-soft);background:#F3ECDF;
+    border-radius:14px;padding:13px 18px;line-height:1.7}
+
+  /* back to top */
+  #top{position:fixed;right:20px;bottom:20px;width:48px;height:48px;border-radius:50%;
+    background:var(--terra);color:#fff;border:none;font-size:1.2rem;cursor:pointer;
+    opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;
+    box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center}
+  #top.show{opacity:1;pointer-events:auto}
+  #top:hover{transform:translateY(-3px)}
+  #top:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+  a:focus-visible,nav.toc a:focus-visible{outline:3px solid var(--terra);
+    outline-offset:2px;border-radius:4px}
+
+  .reveal{opacity:0;transform:translateY(10px);
+    transition:opacity .55s ease,transform .55s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:560px){
+    body{font-size:16.5px}
+    .wrap{padding:38px 18px 64px}
+    h1.doc-title{font-size:1.68rem}
+    .hero{padding:30px 22px}
+    .hero h2{font-size:1.6rem}
+    nav.toc ol{grid-template-columns:1fr}
+    .compare{flex-direction:column}
+    .vs{transform:rotate(90deg)}
+    .stat .big{font-size:2.4rem}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .reveal{opacity:1;transform:none;transition:none}
+    #top{transition:none}
+  }
+  @media print{
+    body{background:#fff;font-size:11.5pt}
+    .wrap{max-width:none;padding:0}
+    nav.toc,#top{display:none}
+    .hero,.data,.stat,.closing,aside.note,footer.src .note-foot{
+      -webkit-print-color-adjust:exact;print-color-adjust:exact}
+    section.blk{page-break-inside:avoid}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="doc">
+    <h1 class="doc-title">㈱ウィルオブ・コンストラクションについて</h1>
+  </header>
+
+  <nav class="toc" aria-label="目次">
+    <p>目次</p>
+    <ol>
+      <li><a href="#c1"><span class="n">1</span><span>結論</span></a></li>
+      <li><a href="#c2"><span class="n">2</span><span>調べて分かったこと</span></a></li>
+      <li><a href="#c3"><span class="n">3</span><span>現場で起きていること</span></a></li>
+      <li><a href="#c4"><span class="n">4</span><span>新卒カードは慎重に</span></a></li>
+      <li><a href="#c5"><span class="n">5</span><span>どんな仕事が合うか</span></a></li>
+      <li><a href="#c6"><span class="n">6</span><span>まとめ</span></a></li>
+    </ol>
+  </nav>
+
+  <!-- 1. 結論 -->
+  <section class="hero reveal" id="c1">
+    <p class="hero-kicker">結論</p>
+    <h2>もう少し就活を続けて、別の会社も検討したい。</h2>
+    <p class="lead">精神的な余裕のための保険として同社の内定は保持しつつ、他の会社も引き続き受けるべき、と僕は思う。理由は3つ。</p>
+    <ol class="reasons">
+      <li><b>離職率が平均よりかなり高い</b></li>
+      <li><b>施工管理という仕事と、客先常駐という働き方</b>が、ゆりちゃんには合いそうにない</li>
+      <li>そもそも、<b>この会社に「新卒」で入る必要がない</b></li>
+    </ol>
+  </section>
+
+  <!-- 2. 調べて分かったこと -->
+  <section class="blk reveal" id="c2">
+    <h2 class="sec"><span class="num">2</span>調べて分かったこと</h2>
+
+    <h3 class="layer">レイヤー1 ／ この会社について</h3>
+
+    <h4 class="pt">■ 離職率が、平均よりかなり高い</h4>
+    <p>この会社に2022年に入社した242人のうち、122人が2年で退職（約半数）。全国平均では、大卒が3年以内に辞める割合は約3割。</p>
+
+    <div class="data">
+      <p class="cap">入社後に辞めた人の割合</p>
+      <div class="compare">
+        <div class="stat alert">
+          <span class="lbl">この会社</span>
+          <span class="big">約50<small style="font-size:1.2rem">%</small></span>
+          <span class="period">入社2年で</span>
+        </div>
+        <div class="vs">vs</div>
+        <div class="stat">
+          <span class="lbl">全国平均（大卒）</span>
+          <span class="big">約30<small style="font-size:1.2rem">%</small></span>
+          <span class="period">入社3年で</span>
+        </div>
+      </div>
+    </div>
+    <p>世間一般が「3年かけて3割」辞めるところを、この会社は2年を待たずに半数が辞めている。ペースが明らかに速い。</p>
+    <p class="source">出典：OpenWork（2024年4月時点）／ 厚生労働省「新規学卒就職者の離職状況」</p>
+
+    <aside class="note">
+      <span class="label">僕の見方</span>
+      <p>「たまたま合わない人がいた」というレベルの数字ではない。人が辞めていく明確な理由が存在すると考えるのが自然。</p>
+    </aside>
+
+    <h4 class="pt">■ 採用ページがずさん</h4>
+    <p>ゆりちゃんが内定した職種の募集ページを読んだが、気になる点が多い。</p>
+    <ul>
+      <li><strong>「大満足の研修内容」</strong> … 誰が、何と比べて満足したのか、根拠がない。</li>
+      <li><strong>「高い定着率」</strong> … 上の数字（2年で半数が退職）と矛盾する。むしろ低い。</li>
+      <li><strong>「志望理由はなんでもいい」という趣旨の記載</strong> … 応募者を見極める気がなく、とにかく人数を集めたい、と読めてしまう。</li>
+    </ul>
+    <p class="source">出典：ウィルオブ・コンストラクション 新卒採用ページ <a href="https://willof-construction.co.jp/recruits/new-grad/">willof-construction.co.jp/recruits/new-grad/</a></p>
+
+    <aside class="note">
+      <span class="label">僕の見方</span>
+      <p>採用ページは、会社が外向けに一番きれいに見せようとする場所。その一番大事な場所がこの作りなら、中の管理体制も推して知るべし。</p>
+    </aside>
+
+    <h3 class="layer">レイヤー2 ／ 建築業界について</h3>
+    <p>会社の話を抜きにしても、<strong>建築業界自体が新卒にとって厳しい世界</strong>。</p>
+    <ul>
+      <li>深刻な人手不足で、高齢化も進み、若手が少ない。その穴を埋めるように外国人労働者も増えていて、中には不法滞在の問題も指摘される。いずれにしても、新卒の女の子が飛び込むのにふさわしい環境とは言いにくい。</li>
+      <li>いわゆる3K（きつい・汚い・危険）が未だに根強い。</li>
+      <li>なぜ人手不足なのか。それは<strong>「きつい・危険」という評判が長年積み重なってきた結果</strong>でもある。</li>
+    </ul>
+    <p>そして施工管理は、建築の中でも<strong>「一番現場に近い、一番ハードな仕事」の1つ</strong>として知られている。相手にするのは、まさに現場の最前線で働く「職人」や「作業員」。働く場所は工事現場で、夏は酷暑の中、作業服を着て汗だくで働くことになる。怪我のリスクも、オフィスでする仕事に比べて格段に高い。</p>
+
+    <aside class="note">
+      <span class="label">僕の見方</span>
+      <p>長年放置されてきた業界の構造問題に対し、労働時間規制という表面的な手当てを施した結果、「残業をさせられなくなったので人手が足りないが、正社員を雇う人件費は無い」みたいなことになった。このルールと現実の歪みを埋める形で登場したのが、「客先常駐×施工管理」という業態。このビジネスモデルが成立していること自体が、日本の建築業界の負の側面そのものとも言える。</p>
+    </aside>
+
+    <h3 class="layer">レイヤー3 ／ 客先常駐というビジネスモデル</h3>
+
+    <h4 class="pt">■ まず「客先常駐」とは何か</h4>
+    <p>ゆりちゃんは「ウィルオブの正社員」になる。だが、実際に働く場所はウィルオブの会社ではなく、よその建設現場。<strong>雇い主と、働く場所が、別の会社になる</strong>。これが客先常駐というビジネスモデル。</p>
+    <p>新卒で業界未経験の人に、短い研修を施しただけで、いきなりよその会社の現場に送り込む。普通に考えれば無理がある。なぜ、こんな不自然な形が成り立つのか。理由はこんな感じ↓</p>
+    <ul>
+      <li>建設会社の仕事には、繁忙の波がある。大型案件のたびに人手が要るが、自社で抱え続けるのは負担。だから<strong>「必要な時に、必要な人数だけ、外から借りたい」</strong>というニーズが常にある。</li>
+      <li>そこにウィルオブのような派遣会社が、未経験者を集めて自社で雇い、短い研修を経て現場に送り込む。そして<strong>現場からもらう料金と、本人に払う給料の差額（マージン）で稼ぐ</strong>。</li>
+      <li>人手不足を雑に解決するのが人材派遣。当然、派遣された側にも、受け入れる発注元の企業にも負荷がかかる。でも現場は待ったなしなので、結果的に派遣されたスタッフに様々な負荷が集中し、どんどん人が辞める。だが建設の人手不足が深刻すぎて需要は尽きない。結果、<strong>どんどん人を雇い、簡易な研修をして、どんどん送る。辞めたら次の人を送る</strong>。このパワープレーで存続させているのが、この業態の正体。</li>
+    </ul>
+
+    <h4 class="pt">■ この働き方は、もともとIT業界で先に広まった</h4>
+    <p>そしてIT業界では、同じ問題が早くから起きている。</p>
+    <ul>
+      <li>配属される案件しだいで、身につくスキルがバラバラ。誰でもできる単純作業の現場に当たると、何年いても経験が積み上がらない。</li>
+      <li>案件が切れると「待機」になる。会社によっては待機中の給料がカットされる。</li>
+      <li>自社ではなく客先にいるので、自分の会社の上司から指導も評価もされにくい。</li>
+      <li>結果として、IT業界では客先常駐型の働き方は<strong>「できれば避けたほうがいい」がほぼ定説</strong>。生き残るために一番大事なのは技術力ではなく「鈍感力」だ、と皮肉まじりに言われるほど。</li>
+    </ul>
+    <p>建築業界の客先常駐は、このITの後を追っている。<strong>まだ業界にプレイヤーが少なく、未経験でも入りやすいだけで、行き着く先は同じ</strong>になる可能性が高い。</p>
+    <p class="source">出典：@IT「IT業界の客先常駐（SES）の構造解説」 <a href="https://atmarkit.itmedia.co.jp/ait/articles/1810/09/news005.html">atmarkit.itmedia.co.jp</a></p>
+
+    <aside class="note">
+      <span class="label">僕の見方</span>
+      <p>不人気・高離職率な業界ゆえの需要と供給の歪みと、労働基準法の抜け穴を突いたビジネスが客先常駐。「会社が儲かる仕組み」が先にあって、働く本人の満足度や成長は二の次になりやすい構造。上司も、雰囲気も、忙しさも、配属された現場しだいで決まる。</p>
+    </aside>
+  </section>
+
+  <!-- 3. 現場で起きていること -->
+  <section class="blk reveal" id="c3">
+    <h2 class="sec"><span class="num">3</span>現場で実際に起きていること<span class="tail">経験者の声</span></h2>
+
+    <h4 class="pt">■ 配属される現場で、環境が大きく変わる</h4>
+    <p>ウィルオブ経験者の口コミでは、派遣先によって扱いが「天と地ほど違う」と書かれている。さらに、自分から「現場を変えたい」と言うと、次が決まるまで給料が出ない期間があり、社会保険や税金を自腹で払うことになった、という声もあった。</p>
+    <p class="source">出典：en-hyouban <a href="https://en-hyouban.com/company/10200168945/woman/">en-hyouban.com</a> ／ OpenWork</p>
+    <aside class="note insight">
+      <span class="label">ここから読み取れること</span>
+      <p>レイヤー3で説明したIT業界の「待機」「案件ガチャ」が、ウィルオブでも現実に起きている。ハズレの現場を引いても、変えようとすれば無給のリスクを背負う。</p>
+    </aside>
+
+    <h4 class="pt">■ 女性・現場・トイレの現実</h4>
+    <p>現役の女性現場監督のnoteでは、現場に出る女性が朝いちばんに考えるのは図面の段取りではなく「今日、トイレをどこで済ませるか」だと書かれている。工期が1ヶ月以上あっても簡易トイレだけ、短い現場ではトイレ自体がないこともある。着替え場所もなく、トイレの個室で着替える。</p>
+    <p class="source">出典：note「現場にトイレがない？…生存戦略の話」 <a href="https://note.com/aisei_413/n/n5779be8cf47f">note.com/aisei_413</a></p>
+    <p>別の女性現場監督の記事では、トイレ事情が最大の悩みで男性には言いづらいこと、セクハラ的な言動も「あるある」だと書かれている。</p>
+    <p class="source">出典：施工管理求人ナビ「建設現場で働く"女性の悩み"」 <a href="https://sekokan-navi.jp/magazine/63138">sekokan-navi.jp</a></p>
+    <aside class="note insight">
+      <span class="label">ここから読み取れること</span>
+      <p>施工管理の女性は、仕事の中身以前に、トイレや更衣室といった基本的な生活インフラすら保証されない環境で働いている。しかもこの筆者たちは、それを自分の工夫で「割り切って」乗り越えている。裏を返せば、割り切れない人には続けられない世界。</p>
+    </aside>
+
+    <h4 class="pt">■ 向き・不向きが、はっきり出る仕事</h4>
+    <p>22歳・施工管理3年目の女性のnoteでは、この仕事に向くのは「怒られても軽く流せる人」「忙しいのが好きな人」「挑戦したい人」だと書かれている。その一方で、「精神的につらくなる人が続出する」「2年で辞めた人を6人見た」「鬱で休職した同期もいた」とも、正直に書いている。</p>
+    <p class="source">出典：note「なぜ施工管理になりたかったのか」 <a href="https://note.com/kiramo/n/n8702fc28bec6">note.com/kiramo</a></p>
+    <aside class="note insight">
+      <span class="label">ここから読み取れること</span>
+      <p>当事者本人が「向き不向きがはっきり出る」と言っている。「2年で6人辞めた」という体感は、レイヤー1で見た離職率の数字（2年で半数）とぴたりと一致する。データと現場の声が、同じことを別の角度から裏付けている。</p>
+    </aside>
+
+    <aside class="note">
+      <span class="label">僕の見方</span>
+      <p>僕の感覚として、建築現場で働き続けている女性には、「男勝りな部分がある」「工業高校や高専など、もともと男性ばかりの環境で育ってきた」「女子同士のコミュニティに、あまり居場所がなかった」という傾向がある気がする。これは僕の偏見かもしれない。けれど、さっき紹介した3人も、実際に高専卒だったり「女性社会は向いていない」と書いていたりする。</p>
+      <p>ゆりちゃんは、たぶんそういうタイプではない。持ち前の明るさや素直さは大きな長所だが、この仕事で本当に必要なのは、それとはまた別の、ある種の鈍感さ・図太さ。レイヤー3で触れたIT業界の「一番大事なのは鈍感力」という話とも重なる。ゆりちゃんの良さが活きる場所とは思えないし、だからこそ、もったいない。</p>
+    </aside>
+  </section>
+
+  <!-- 4. 新卒カード -->
+  <section class="blk reveal" id="c4">
+    <h2 class="sec"><span class="num">4</span>新卒カードは慎重に切るべき</h2>
+    <p>新卒という立場には、明確な価値がある。</p>
+    <ul>
+      <li>新卒の一括採用は「ポテンシャル採用」。<strong>高いスキルや実績がなくても、将来性だけで評価される</strong>。だから本来、中途では高いスキルがないと入れないような大手・優良企業にも、新卒なら門戸が大きく開いている。人生で一度きりの機会。</li>
+      <li>一方で、この会社のような未経験の施工管理派遣は、<strong>通年で、大量に、20代後半でも30代でも、第二新卒でも既卒でも、いつでも入れる</strong>。派遣大手が年に1,000人以上を採用し、幅広い年代を受け入れている世界。希少性がない。</li>
+    </ul>
+    <p>つまり、<strong>いつでも入れる会社のために、一度しか使えない新卒カードを今ここで切るのは、もったいない</strong>。</p>
+    <p>今はもう6月で、新卒採用のボリュームゾーンは通過してしまった。それでも、秋頃まではまだ募集はある。今すぐ動き出して立て直せば、新卒として方向修正するのは十分に間に合う。</p>
+    <p class="source">出典：新卒一括採用／ポテンシャル採用に関する解説記事 ／ 日経クロステック等の業界記事（通年・大量採用、幅広い年代の受け入れ）</p>
+  </section>
+
+  <!-- 5. どんな仕事 -->
+  <section class="blk reveal" id="c5">
+    <h2 class="sec"><span class="num">5</span>では、どんな仕事なら合いそうか</h2>
+    <p>ゆりちゃんは「厳しい営業は嫌」「事務職は向いていない」と言っている。でも、その2つの"間"に、ゆりちゃんの明るさと人懐っこさが活きる仕事はあるはず。例えば――</p>
+    <ul>
+      <li><strong>人材会社のコーディネーター</strong> … 人と話して仕事を紹介する仕事。コミュニケーション能力が活きるし、事務職ほど閉じた仕事でもない。ただし正直に言えば、人材業界も激務になりがちな世界。決して楽な仕事ではない。</li>
+      <li><strong>ショールーム・受付・接客</strong>（住宅、ブライダル、商業施設など） … 対面で可愛がられる強みがそのまま活きる。</li>
+      <li><strong>企画・広報・販促のアシスタント</strong> … メーカーなど事業会社の、いわゆる「本部系職種」。明るさと発信力が活きる。人気職なので簡単ではないが、最大手以外を狙えば可能性はあるかもしれない。</li>
+    </ul>
+    <p>共通点は、人と関わるけれど、数字で詰められる営業ではないこと。</p>
+  </section>
+
+  <!-- 6. まとめ -->
+  <section class="blk sum reveal" id="c6">
+    <h2 class="sec"><span class="num">6</span>まとめ</h2>
+    <ul>
+      <li><strong>就活は、続けるべき。</strong></li>
+      <li><strong>内定は、承諾の期限まで「保険」として持っておけばいい。</strong> 今すぐ断る必要はない。</li>
+      <li><strong>焦って、今ここで決める理由はない。</strong></li>
+    </ul>
+    <p class="closing">最後に決めるのは、もちろんゆりちゃん本人。ただ、今の会社や施工管理という仕事に強い思い入れが無いなら、別の会社・別の職種も検討した方がいい。それが僕の意見。</p>
+  </section>
+
+  <!-- sources -->
+  <footer class="src">
+    <h2>出典一覧</h2>
+    <ul>
+      <li>ゆりちゃんの内定職種の募集ページ（ウィルオブ・コンストラクション）：<a href="https://willof-construction.co.jp/recruits/new-grad/">willof-construction.co.jp/recruits/new-grad/</a></li>
+      <li>OpenWork（社員クチコミ・離職者数など）：<a href="https://www.openwork.jp/company.php?m_id=a0C10000015Xki8">openwork.jp</a></li>
+      <li>en-hyouban（女性社員のクチコミ）：<a href="https://en-hyouban.com/company/10200168945/woman/">en-hyouban.com</a></li>
+      <li>note「現場にトイレがない？…生存戦略の話」：<a href="https://note.com/aisei_413/n/n5779be8cf47f">note.com/aisei_413</a></li>
+      <li>note「なぜ施工管理になりたかったのか」：<a href="https://note.com/kiramo/n/n8702fc28bec6">note.com/kiramo</a></li>
+      <li>施工管理求人ナビ「建設現場で働く"女性の悩み"」：<a href="https://sekokan-navi.jp/magazine/63138">sekokan-navi.jp</a></li>
+      <li>日経クロステック「2024年問題迫る建設業、現場への技術者派遣が急増」：<a href="https://xtech.nikkei.com/atcl/nxt/column/18/00142/01747/">xtech.nikkei.com</a></li>
+      <li>@IT「IT業界の客先常駐（SES）の構造解説」：<a href="https://atmarkit.itmedia.co.jp/ait/articles/1810/09/news005.html">atmarkit.itmedia.co.jp</a></li>
+      <li>厚生労働省「新規学卒就職者の離職状況」（大卒3年以内離職率 約3割）</li>
+    </ul>
+    <p class="note-foot">※ 数値は調査時点の公開情報に基づく。賞与制度など一部は変更されている可能性があり、最終的な勤務条件は本人が会社に直接確認すること。</p>
+  </footer>
+
+</div>
+
+<button id="top" aria-label="先頭へ戻る">↑</button>
+
+<script>
+  var btn=document.getElementById('top');
+  addEventListener('scroll',function(){
+    if(scrollY>360)btn.classList.add('show');else btn.classList.remove('show');
+  },{passive:true});
+  btn.addEventListener('click',function(){scrollTo({top:0,behavior:'smooth'})});
+  var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!rm&&'IntersectionObserver'in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+    },{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+  }else{
+    document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in')});
+  }
+</script>
+</body>
+</html>
